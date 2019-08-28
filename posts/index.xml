@@ -18,7 +18,7 @@
       
       <guid>https://joppevos.github.io/posts/post_01/</guid>
       <description>Data is dirty Testing on assumptions you have with tests is the standard in software development for decades. In a new field like data science it is not so common, but should be just as important.
-Problems do not occur in the database, a database can mostly store whatever you give it. The problems are found way further down stream when the predictions are made and information is already displayed to the client.</description>
+Introduction Problems do not occur in the database, a database can mostly store whatever you give it. The problems are found way further down stream when the predictions are made and information is already displayed to the client.</description>
     </item>
     
   </channel>

@@ -23,7 +23,7 @@
 
 <meta property="og:title" content="Pipeline to test Dirty-Data" />
 <meta property="og:description" content="Data is dirty Testing on assumptions you have with tests is the standard in software development for decades. In a new field like data science it is not so common, but should be just as important.
-Problems do not occur in the database, a database can mostly store whatever you give it. The problems are found way further down stream when the predictions are made and information is already displayed to the client." />
+Introduction Problems do not occur in the database, a database can mostly store whatever you give it. The problems are found way further down stream when the predictions are made and information is already displayed to the client." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://joppevos.github.io/posts/post_01/" />
 <meta property="article:published_time" content="2019-08-28T10:36:17+02:00" />
@@ -32,12 +32,12 @@ Problems do not occur in the database, a database can mostly store whatever you 
 
 <meta itemprop="name" content="Pipeline to test Dirty-Data">
 <meta itemprop="description" content="Data is dirty Testing on assumptions you have with tests is the standard in software development for decades. In a new field like data science it is not so common, but should be just as important.
-Problems do not occur in the database, a database can mostly store whatever you give it. The problems are found way further down stream when the predictions are made and information is already displayed to the client.">
+Introduction Problems do not occur in the database, a database can mostly store whatever you give it. The problems are found way further down stream when the predictions are made and information is already displayed to the client.">
 
 
 <meta itemprop="datePublished" content="2019-08-28T10:36:17&#43;02:00" />
 <meta itemprop="dateModified" content="2019-08-28T10:36:17&#43;02:00" />
-<meta itemprop="wordCount" content="514">
+<meta itemprop="wordCount" content="518">
 
 
 
@@ -46,7 +46,7 @@ Problems do not occur in the database, a database can mostly store whatever you 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Pipeline to test Dirty-Data"/>
 <meta name="twitter:description" content="Data is dirty Testing on assumptions you have with tests is the standard in software development for decades. In a new field like data science it is not so common, but should be just as important.
-Problems do not occur in the database, a database can mostly store whatever you give it. The problems are found way further down stream when the predictions are made and information is already displayed to the client."/>
+Introduction Problems do not occur in the database, a database can mostly store whatever you give it. The problems are found way further down stream when the predictions are made and information is already displayed to the client."/>
 
 
     </head>
@@ -85,12 +85,16 @@ Problems do not occur in the database, a database can mostly store whatever you 
 
 <p>Testing on assumptions you have with tests is the standard in software development for decades. In a new field like data science it is not so common, but should be just as important.</p>
 
+<h4 id="introduction">Introduction</h4>
+
 <p>Problems do not occur in the database, a database can mostly store whatever you give it. The problems are found way further down stream when the predictions are made and information is already displayed to the client. The damage is done and now you get the job from your boss to look into it. You are not sure where it goes wrong, run some queries against the database to find out, write a small report and rerun the transforming and loading for the days where it went wrong.</p>
 
 <p>This is a situation that I noticed at multiple companies where data is not the product, so not the main focus.</p>
 
 <p>There are loads of open source frameworks out there to write tests for software integration, but not so much for data checks. In the end a test is a test. All it does is make an assertion if its True or False. The only difference with data tests is that there needs to be database connections, completely cloud based and a way to schedule the interval for the tests.
 I decided to modify the framework pytest to my needs and deploy it on AWS.</p>
+
+<h4 id="pipeline-diagram">Pipeline diagram</h4>
 
 <p>The rough plan was to make it easy for people to write tests and make a dashboard that gives information when the test run and if it failed. The person responsible for that client should be notified immediately in case of failure. Below is a diagram of the complete pipeline.</p>
 
@@ -102,6 +106,8 @@ I decided to modify the framework pytest to my needs and deploy it on AWS.</p>
 
 <p>The test can be scheduled by pytest markers, a marker is a way to &lsquo;mark&rsquo; a test to group them together.
 I decided on the markers daily, hourly and weekly since that will cover most of it. The status of each tests will be send to an SNS topic. People and services can subscribe to this topic. If something fails, SNS will notify the subscribed services. Lambda is also subscribed to the topic and parses the JSON with all information about the tests from SNS. Lambda than writes it in a RDS where a simple flask dashboard reads it out.</p>
+
+<h4 id="dashboard">Dashboard</h4>
 
 <p>The dashboard currently displayed on a tv in the office. See image below.
 Every client has its own card where the running processes and tests show green or red.</p>
