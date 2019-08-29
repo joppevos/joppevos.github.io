@@ -20,7 +20,8 @@
 
 
 <meta property="og:title" content="Pipeline to test Dirty-Data" />
-<meta property="og:description" content="Data is dirty You have assumptions about data you recieve. With these assumptions, predictions are made or information is displayed. But what if these assumptions are not correct? Maybe they were correct when the code was written and deployed, but have changed over time? Testing on assumptions is the standard in software development for decades, called Test Driven Development. In a new field like data science it is not so common, but should be just as important." />
+<meta property="og:description" content="Introduction You have assumptions about data you receive. With these assumptions, predictions are made or information is displayed. But what if these assumptions are not correct or have changed over time? Testing on assumptions is the standard in software development for decades, called Test Driven Development. In a new field like data science it is not so common, but should be just as important.
+High impactproblems that occur are mostly found way further down stream when the predictions are made and information is already displayed to the client." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://joppevos.github.io/posts/post_01/" />
 <meta property="article:published_time" content="2019-08-28T10:36:17+02:00" />
@@ -28,12 +29,13 @@
 
 
 <meta itemprop="name" content="Pipeline to test Dirty-Data">
-<meta itemprop="description" content="Data is dirty You have assumptions about data you recieve. With these assumptions, predictions are made or information is displayed. But what if these assumptions are not correct? Maybe they were correct when the code was written and deployed, but have changed over time? Testing on assumptions is the standard in software development for decades, called Test Driven Development. In a new field like data science it is not so common, but should be just as important.">
+<meta itemprop="description" content="Introduction You have assumptions about data you receive. With these assumptions, predictions are made or information is displayed. But what if these assumptions are not correct or have changed over time? Testing on assumptions is the standard in software development for decades, called Test Driven Development. In a new field like data science it is not so common, but should be just as important.
+High impactproblems that occur are mostly found way further down stream when the predictions are made and information is already displayed to the client.">
 
 
 <meta itemprop="datePublished" content="2019-08-28T10:36:17&#43;02:00" />
 <meta itemprop="dateModified" content="2019-08-28T10:36:17&#43;02:00" />
-<meta itemprop="wordCount" content="522">
+<meta itemprop="wordCount" content="423">
 
 
 
@@ -41,7 +43,8 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Pipeline to test Dirty-Data"/>
-<meta name="twitter:description" content="Data is dirty You have assumptions about data you recieve. With these assumptions, predictions are made or information is displayed. But what if these assumptions are not correct? Maybe they were correct when the code was written and deployed, but have changed over time? Testing on assumptions is the standard in software development for decades, called Test Driven Development. In a new field like data science it is not so common, but should be just as important."/>
+<meta name="twitter:description" content="Introduction You have assumptions about data you receive. With these assumptions, predictions are made or information is displayed. But what if these assumptions are not correct or have changed over time? Testing on assumptions is the standard in software development for decades, called Test Driven Development. In a new field like data science it is not so common, but should be just as important.
+High impactproblems that occur are mostly found way further down stream when the predictions are made and information is already displayed to the client."/>
 
 
     </head>
@@ -74,23 +77,19 @@
 
 <p><img src="/images/post_01/background.jpg" alt="diagram.png" /></p>
 
-<h4 id="data-is-dirty">Data is dirty</h4>
-
-<p>You have assumptions about data you recieve. With these assumptions, predictions are made or information is displayed. But what if these assumptions are not correct? Maybe they were correct when the code was written and deployed, but have changed over time?
-Testing on assumptions is the standard in software development for decades, called Test Driven Development. In a new field like data science it is not so common, but should be just as important.</p>
-
 <h4 id="introduction">Introduction</h4>
 
-<p>Most problems are found way further down stream when the predictions are made and information is already displayed to the client. The damage is done and now you get the job from your boss to look into it. You are not sure where it goes wrong, run some queries against the database to find out, write a small report and rerun the transforming and loading for the days where it went wrong.</p>
+<p>You have assumptions about data you receive. With these assumptions, predictions are made or information is displayed. But what if these assumptions are not correct or have changed over time?
+Testing on assumptions is the standard in software development for decades, called Test Driven Development. In a new field like data science it is not so common, but should be just as important.</p>
 
-<p>This is a situation that I noticed at multiple companies where data is not the product, so not the main focus. To assist these companies there need to be an easy way write test against multiple different databases that is scalable.</p>
-
-<p>There are loads of open source frameworks out there to write tests for software integration, but not so much for data checks. In the end a test is a test. All it does is make an assertion if its True or False. The only difference with data tests is that they need a database connections, preferable cloud based and have the ability to schedule the test.
-I decided to modify the framework pytest to my needs and deploy it on AWS.</p>
+<p>High impactproblems that occur are mostly found way further down stream when the predictions are made and information is already displayed to the client. The damage is done and you have to trace back the pipeline where it went wrong. A simple test on the data could prevent this from happening.</p>
 
 <h4 id="pipeline-diagram">Pipeline diagram</h4>
 
-<p>The rough plan was to make it easy for people to write tests and make a dashboard that gives information when the test passed or failed. If a problem occurs and the test fails, than the person responsible for the client should be notified immediately. Below is a diagram of the complete pipeline.</p>
+<p>There are loads of open source frameworks out there to write tests for software integration, but not so much for data checks. In the end a test is a test. All it does is make an assertion if its True or False.
+I decided to modify the framework pytest to my needs and deploy it on AWS.</p>
+
+<p>The rough plan was to make it easy for people to write data tests and make a dashboard that gives information when the test passed or failed. If a problem occurs and the test fails, than the person responsible for the client should be notified immediately. Below is a diagram of the complete pipeline.</p>
 
 <p><img src="/images/post_01/diagram.png" alt="diagram.png" /></p>
 
