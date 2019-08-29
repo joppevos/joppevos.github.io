@@ -27,7 +27,7 @@ In my spare time, I read, make art and thinker with my motorcycle.</description>
       <pubDate>Wed, 28 Aug 2019 10:36:17 +0200</pubDate>
       
       <guid>https://joppevos.github.io/posts/post_01/</guid>
-      <description>Data is dirty You have assumptions about data you recieve after transforming and loading. With these assumptions, predictions are made or information is displayed. But what if these assumptions are not correct? Maybe they were correct when the code was written and deployed, but have changed over time? Testing on assumptions the standard in software development for decades, called Test Driven Development. In a new field like data science it is not so common, but should be just as important.</description>
+      <description>Data is dirty You have assumptions about data you reciev. With these assumptions, predictions are made or information is displayed. But what if these assumptions are not correct? Maybe they were correct when the code was written and deployed, but have changed over time? Testing on assumptions is the standard in software development for decades, called Test Driven Development. In a new field like data science it is not so common, but should be just as important.</description>
     </item>
     
   </channel>
